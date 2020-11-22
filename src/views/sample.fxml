@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <Label layoutX="220.0" layoutY="27.0" prefHeight="19.0" prefWidth="161.0" text="Estado de los contenedores">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="Contenedor1" fitHeight="200.0" fitWidth="200.0" layoutX="31.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="contenedor2" fitHeight="200.0" fitWidth="200.0" layoutX="359.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="93.0" layoutY="121.0" prefHeight="17.0" prefWidth="76.0" text="Contenedor 1" />
+      <Label layoutX="421.0" layoutY="121.0" prefHeight="17.0" prefWidth="76.0" text="Contenedor 2" />
+   </children>
+</AnchorPane>
