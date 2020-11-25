@@ -4,6 +4,7 @@ package controller;
 import dao.DaoDistancia;
 import dao.Daoconfig;
 import hibernet.ConexionHibernet;
+import hibernet.Distancia;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import model.AnimatedImage;
 
 import java.net.URL;
 
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -40,7 +42,23 @@ public class Controller implements Initializable {
     }
 
     public int ChecarEstado() {
-        int porcentajeDeCapacidad = (int) Math.floor(Math.random()*5);
+        DaoDistancia daoDistancia = new DaoDistancia();
+        List<Integer> n = daoDistancia.getDisatancia();
+        int ultimoValor = n.size()-1;
+        int porcentajeDeCapacidadNeto = n.get(ultimoValor);
+        int porcentajeDeCapacidad = 4;
+        if (porcentajeDeCapacidadNeto<=5){
+            porcentajeDeCapacidad=0;
+        }if (porcentajeDeCapacidadNeto>=5 && porcentajeDeCapacidadNeto<10){
+            porcentajeDeCapacidad=1;
+        }if (porcentajeDeCapacidadNeto>=10 && porcentajeDeCapacidadNeto<15){
+            porcentajeDeCapacidad=2;
+        }if (porcentajeDeCapacidadNeto>=15 && porcentajeDeCapacidadNeto<20){
+            porcentajeDeCapacidad=3;
+        }
+        if (porcentajeDeCapacidadNeto==20){
+            porcentajeDeCapacidad=4;
+        }
 
         return porcentajeDeCapacidad;
     }
@@ -56,10 +74,11 @@ public class Controller implements Initializable {
         }
         basura.setFrames(animacionBasura);
         contenedor2.setImage(basura.getFrame(0));
+        Contenedor1.setImage(basura.getFrame(0));
 
         timeline.setCycleCount(timeline.INDEFINITE);
 
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), new EventHandler<ActionEvent>() {
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(2.0), new EventHandler<ActionEvent>() {
             public void handle(ActionEvent ae) {
 
                 int porcentaje = ChecarEstado();

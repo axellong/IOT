@@ -21,11 +21,12 @@ public class DaoDistancia {
         factory=ConexionHibernet.getFactory();
     }
 
-    public List getDisatanci(){
+    public List<Integer> getDisatancia(){
         Session session = factory.openSession();
         Criteria crit = session.createCriteria(Distancia.class);
         crit.setProjection(Projections.groupProperty("valor"));
-        List listaCiudad = crit.list();
+        List<Integer> listaCiudad = crit.list();
+        System.out.println(listaCiudad);
         return  listaCiudad;
 
 
